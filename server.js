@@ -1,6 +1,16 @@
 // server.js
 // where your node app starts
 
+
+
+
+//const expresslayout=require('express-ejs-layouts')
+
+const expresslayout=require('ejs')
+const path=require("path")
+
+
+
 // init project
 var express = require('express');
 var app = express();
@@ -13,9 +23,18 @@ app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 20
                // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+
+
+//app.use(expresslayout)
+app.set('views',path.join(__dirname,'/views'))
+console.log(__dirname,'/views')
+app.set('view engine','ejs')
+
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  //res.sendFile(__dirname + '/views/index.html');
+  res.render('hello')
 });
 
 

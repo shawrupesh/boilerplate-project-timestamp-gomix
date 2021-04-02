@@ -11,7 +11,7 @@ const path=require("path")
 
 const mongoose=require('mongoose')
 //database connection
-const url ='mongodb+srv://rupesh:rup12345@cluster0.xzgyo.mongodb.net/walletData?retryWrites=true&w=majority';
+const url =process.env.Mongo_url;
 mongoose.connect(url,{useNewUrlParser:true,useCreateIndex:true,useUnifiedTopology:true,useFindAndModify:true})
 const connection=mongoose.connection;
 connection.once('open',()=>{
